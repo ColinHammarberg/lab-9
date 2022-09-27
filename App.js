@@ -55,7 +55,8 @@ export default function App() {
     return (
       <View style={styles.styleSub}>
         <View style={styles.styleSub}>
-          <View style={{ marginBottom: "10px" }}>
+          <View style={{ marginBottom: "10px", backgroundColor: "white",
+              padding: "20px", }}>
             <Image
               source={{ uri: `${props.img}` }}
               style={{ width: 200, height: 150 }}
