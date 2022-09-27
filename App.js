@@ -40,7 +40,7 @@ export default function App() {
     },
   ];
 
-  const [clicked, setClicked] = React.useState(false);
+  const [clicked, setClicked] = useState(false);
   const [search, setSearch] = useState("");
 
   function SortPrice(x) {
