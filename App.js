@@ -11,7 +11,6 @@ import {
   Image,
   FlatList,
 } from "react-native";
-import Constants from "expo-constants";
 
 export default function App() {
   let data = [
@@ -41,10 +40,8 @@ export default function App() {
     },
   ];
 
-  console.log("data", data);
-
-  const [clicked, set_clicked] = React.useState(false);
-  const [search, set_search] = useState("");
+  const [clicked, setClicked] = React.useState(false);
+  const [search, setSearch] = useState("");
 
   function SortPrice(x) {
     let filterArray = Array.from(x);
@@ -54,8 +51,7 @@ export default function App() {
     return filterArray;
   }
 
-  const Ads = (props) => {
-    console.log(props.img);
+  const RenderAds = (props) => {
     return (
       <View style={styles.styleSub}>
         <View style={styles.styleSub}>
@@ -83,7 +79,7 @@ export default function App() {
             placeholder="Enter keyword"
             selectionColor="black"
             keyboardType="default"
-            onChangeText={(text) => set_search(text)}
+            onChangeText={(text) => setSearch(text)}
           />
         </View>
 
@@ -91,7 +87,7 @@ export default function App() {
           <FlatList
             data={SortPrice(data)}
             renderItem={({ item }) => (
-              <Ads
+              <RenderAds
                 title={item.title}
                 location={item.location}
                 price={item.price}
@@ -103,7 +99,7 @@ export default function App() {
         </View>
       </ScrollView>
       <View>
-        <Button title="Sort By Price" onPress={() => set_clicked(true)} />
+        <Button title="Sort By Price" onPress={() => setClicked(true)} />
       </View>
     </SafeAreaView>
   );
