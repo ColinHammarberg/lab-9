@@ -46,8 +46,12 @@ export default function App() {
   function SortPrice(x) {
     let filterArray = Array.from(x);
     if (search) {
-      filterArray = x.filter((a) => a.title.toLowerCase().includes(search));
-    } else return clicked ? x.sort((a, b) => a.price - b.price) : x;
+      filterArray = filterArray.filter((a) =>
+        a.title.toLowerCase().includes(search)
+      );
+    } else if (clicked) {
+      return filterArray.sort((a, b) => a.price - b.price);
+    }
     return filterArray;
   }
 
@@ -55,8 +59,13 @@ export default function App() {
     return (
       <View style={styles.styleSub}>
         <View style={styles.styleSub}>
-          <View style={{ marginBottom: "10px", backgroundColor: "white",
-              padding: "20px", }}>
+          <View
+            style={{
+              marginBottom: "10px",
+              backgroundColor: "white",
+              padding: "20px",
+            }}
+          >
             <Image
               source={{ uri: `${props.img}` }}
               style={{ width: 200, height: 150 }}
@@ -100,7 +109,10 @@ export default function App() {
         </View>
       </ScrollView>
       <View>
-        <Button title="Sort By Price" onPress={() => setClicked(true)} />
+        <Button
+          title="Sort By Price"
+          onPress={() => setClicked((clicked) => !clicked)}
+        />
       </View>
     </SafeAreaView>
   );
@@ -117,7 +129,6 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     margin: 12,
-    width: "600px",
     borderWidth: 1,
     padding: 10,
     backgroundColor: "white",
