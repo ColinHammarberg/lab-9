@@ -49,7 +49,8 @@ export default function App() {
       filterArray = filterArray.filter((a) =>
         a.title.toLowerCase().includes(search)
       );
-    } else if (clicked) {
+    }
+    if (clicked) {
       return filterArray.sort((a, b) => a.price - b.price);
     }
     return filterArray;
